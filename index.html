@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ares GTM — AI-Powered Outbound for B2B Teams</title>
+  <meta name="description" content="Ares replaces 15+ minutes of manual lead research with an autonomous GTM agent. Qualified meetings in your reps' calendars — with human approval before anything sends.">
+  <meta property="og:title" content="Ares GTM — AI-Powered Outbound for B2B Teams">
+  <meta property="og:description" content="An autonomous GTM agent that researches, qualifies, and engages your best-fit prospects. Human-in-the-loop. Always.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aresgtm.com">
+  <link rel="canonical" href="https://aresgtm.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #080808;
+      --bg-elevated: #0f0f0f;
+      --bg-card: #141414;
+      --border: #1e1e1e;
+      --border-hover: #2a2a2a;
+      --text: #e8e4de;
+      --text-muted: #8a8580;
+      --text-dim: #5a5550;
+      --accent: #c8a24e;
+      --accent-dim: rgba(200, 162, 78, 0.12);
+      --accent-glow: rgba(200, 162, 78, 0.06);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(8, 8, 8, 0.8);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    nav.scrolled { border-bottom-color: var(--border); }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--accent); }
+
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 0.6rem 1.5rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .nav-cta:hover {
+      background: #d4af5a;
+      transform: translateY(-1px);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 2rem 6rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      max-width: 900px;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 0.85rem 2.25rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary:hover {
+      background: #d4af5a;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(200, 162, 78, 0.2);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0.85rem 1.5rem;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all 0.25s ease;
+    }
+
+    .btn-ghost:hover {
+      color: var(--text);
+      border-color: var(--border-hover);
+    }
+
+    /* PROOF BAR */
+    .proof-bar {
+      padding: 0 2rem;
+      max-width: 1100px;
+      margin: 0 auto 6rem;
+    }
+
+    .proof-bar-inner {
+      display: flex;
+      gap: 3rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .proof-item {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .proof-num {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+
+    .proof-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      margin-bottom: 1.25rem;
+      max-width: 700px;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 3.5rem;
+      line-height: 1.7;
+    }
+
+    /* PROBLEM / SOLUTION */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .problem-card {
+      padding: 2.25rem;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      transition: border-color 0.3s ease;
+    }
+
+    .problem-card:hover { border-color: var(--border-hover); }
+
+    .problem-card h3 {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .problem-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .problem-card .card-num {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    /* HOW IT WORKS */
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .pipeline-step {
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .pipeline-step:hover {
+      border-color: var(--accent);
+      background: var(--bg-elevated);
+    }
+
+    .pipeline-step::before {
+      content: attr(data-step);
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 400;
+      color: var(--accent-dim);
+      position: absolute;
+      top: 1.25rem;
+      right: 1.5rem;
+      line-height: 1;
+    }
+
+    .pipeline-step h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .pipeline-step p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .pipeline-connector {
+      display: none;
+    }
+
+    /* PRINCIPLES */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .principle {
+      padding: 2rem 2.25rem;
+      border-left: 2px solid var(--border);
+      transition: border-color 0.3s ease;
+    }
+
+    .principle:hover { border-left-color: var(--accent); }
+
+    .principle h3 {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .principle p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      text-align: center;
+      padding: 8rem 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-section .section-tag {
+      justify-content: center;
+    }
+
+    .cta-section .section-tag::before { display: none; }
+
+    .cta-section .section-title {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-section .section-desc {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 2.5rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-left {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .problem-grid,
+      .pipeline,
+      .principles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero { padding: 7rem 1.5rem 4rem; }
+      section { padding: 4rem 1.5rem; }
+      nav { padding: 1rem 1.5rem; }
+
+      .proof-bar-inner {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      footer { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-in {
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .animate-in:nth-child(1) { animation-delay: 0.1s; }
+    .animate-in:nth-child(2) { animation-delay: 0.2s; }
+    .animate-in:nth-child(3) { animation-delay: 0.3s; }
+    .animate-in:nth-child(4) { animation-delay: 0.4s; }
+
+    .hero .hero-tag { animation: fadeUp 0.6s ease 0.1s forwards; opacity: 0; }
+    .hero h1 { animation: fadeUp 0.6s ease 0.2s forwards; opacity: 0; }
+    .hero .hero-sub { animation: fadeUp 0.6s ease 0.35s forwards; opacity: 0; }
+    .hero .hero-actions { animation: fadeUp 0.6s ease 0.5s forwards; opacity: 0; }
+
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="/" class="logo">ARES<span>.</span></a>
+    <a href="mailto:contact@aresgtm.com" class="nav-cta">Get Early Access</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">Managed GTM Engineering</div>
+    <h1>Your reps close deals.<br>Ares fills the <em>pipeline.</em></h1>
+    <p class="hero-sub">
+      An AI-powered outbound engine that researches prospects, qualifies leads, 
+      and drafts personalized outreach — with human approval before anything sends.
+    </p>
+    <div class="hero-actions">
+      <a href="mailto:contact@aresgtm.com" class="btn-primary">Request Early Access</a>
+      <a href="#how" class="btn-ghost">See How It Works</a>
+    </div>
+  </section>
+
+  <!-- PROOF BAR -->
+  <div class="proof-bar">
+    <div class="proof-bar-inner">
+      <div class="proof-item">
+        <div class="proof-num">15 min</div>
+        <div class="proof-label">of manual research per lead — eliminated</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">100%</div>
+        <div class="proof-label">human-in-the-loop — nothing sends without rep approval</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">End-to-end</div>
+        <div class="proof-label">from raw domain list to qualified meeting booked</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="section-tag">The Problem</div>
+    <h2 class="section-title">Your best reps are drowning in research, not selling</h2>
+    <p class="section-desc">
+      B2B outbound is broken. Reps spend more time researching prospects than actually talking to them. 
+      Generic sequences get ignored. Manual personalization doesn't scale.
+    </p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <span class="card-num">01</span>
+        <h3>Research overload</h3>
+        <p>Every qualified touchpoint requires 15–20 minutes of manual digging — company context, tech stack, recent news, the right angle. Multiply that by 50 leads a day.</p>
+      </div>
+      <div class="problem-card">
+        <span class="card-num">02</span>
+        <h3>Spray and pray doesn't work</h3>
+        <p>Generic sequences get 2% reply rates. Buyers can smell a template. But writing truly personalized outreach for every lead is humanly impossible at scale.</p>
+      </div>
+      <div class="problem-card">
+        <span class="card-num">03</span>
+        <h3>Lead quality is a black box</h3>
+        <p>Marketing hands over a list. Sales cherry-picks. 60% of leads never get worked. No one agrees on what "qualified" actually means for your ICP.</p>
+      </div>
+      <div class="problem-card">
+        <span class="card-num">04</span>
+        <h3>Tools, not outcomes</h3>
+        <p>You're paying for 8 different SaaS subscriptions but still stitching the pipeline together manually. More dashboards, same bottleneck.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title">One pipeline. Fully autonomous. Human-approved.</h2>
+    <p class="section-desc">
+      Ares runs your outbound pipeline from lead intake to booked meeting — 
+      autonomously, but always under your reps' control.
+    </p>
+    <div class="pipeline">
+      <div class="pipeline-step" data-step="01">
+        <h3>Qualify</h3>
+        <p>Upload your target domains or connect your CRM. Ares enriches every company — firmographics, tech stack, web performance — then scores and ranks them against your Ideal Customer Profile using vector intelligence.</p>
+      </div>
+      <div class="pipeline-step" data-step="02">
+        <h3>Research</h3>
+        <p>For each qualified lead, Ares autonomously gathers deep context: recent company news, hiring signals, product launches, competitive dynamics. Everything a great SDR would find — in seconds, not minutes.</p>
+      </div>
+      <div class="pipeline-step" data-step="03">
+        <h3>Engage</h3>
+        <p>Ares drafts personalized outreach using your playbook and your rep's voice. Every message lands in Slack for review. Your reps approve, edit, or skip — nothing sends without a human yes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section>
+    <div class="section-tag">What Makes Us Different</div>
+    <h2 class="section-title">Built for trust, not just speed</h2>
+    <p class="section-desc">
+      We're not another AI writing tool. Ares is a managed GTM engine — 
+      we own the pipeline so your team can own the relationships.
+    </p>
+    <div class="principles-grid">
+      <div class="principle">
+        <h3>Managed service, not software</h3>
+        <p>You don't configure Ares — we run it for you. Our team handles setup, tuning, and optimization. You get qualified meetings, not another dashboard to manage.</p>
+      </div>
+      <div class="principle">
+        <h3>Human-in-the-loop, always</h3>
+        <p>Every outreach draft goes through your reps in Slack before sending. Ares learns from their edits over time, getting better with every approval and every correction.</p>
+      </div>
+      <div class="principle">
+        <h3>ICP scoring that actually works</h3>
+        <p>We don't just match on job title and company size. Ares builds vector-based customer archetypes from your best existing accounts, then finds more companies that look like them.</p>
+      </div>
+      <div class="principle">
+        <h3>Your reps' voice, not ours</h3>
+        <p>The system learns each rep's writing style, preferred angles, and tone from their edits. Over time, drafts feel less like AI and more like your best performer on their best day.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-tag">Early Access</div>
+    <h2 class="section-title">Ready to stop researching and start closing?</h2>
+    <p class="section-desc">
+      We're onboarding a small number of B2B teams for early access. 
+      If your reps are spending more time researching than selling, let's talk.
+    </p>
+    <a href="mailto:contact@aresgtm.com" class="btn-primary">Request Early Access</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">&copy; 2026 Ares GTM. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="mailto:contact@aresgtm.com">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.problem-card, .pipeline-step, .principle').forEach(el => {
+      el.style.opacity = '0';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
